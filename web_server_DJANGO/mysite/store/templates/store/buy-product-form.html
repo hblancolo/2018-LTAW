@@ -1,0 +1,40 @@
+{% extends 'store/base.html' %}
+{% block title %}BUY PRODUCT{% endblock %}
+
+{% block content %}
+<style>
+    .product {
+        font-family: Calibri;
+        color: green;
+        font-size: 20px;
+    }
+
+    .form-input{
+        padding-bottom: 10px;
+    }
+
+</style>
+<div class="container">
+    <p class="product">{{ product.product_name }}</p>
+    <h1>Enter your shipping address</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="form-input">
+                Product: <input type="text" value="{{ product.product_name }}" name="product_name" readonly><br>
+            </div>
+            <div class="form-input">
+                Your name: <input type="text" name="user_name" required><br>
+            </div>
+            <div class="form-input">
+                Shipping Address: <input type="text" name="shipping_address"><br>
+            </div>
+            <div class="form-input">
+                ZIP Code: <input type="number" name="zip_code" required><br>
+            </div>
+        </div>
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
+{% endblock %}

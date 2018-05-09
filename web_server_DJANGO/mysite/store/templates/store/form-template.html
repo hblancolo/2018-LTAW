@@ -1,0 +1,7 @@
+{% for field in form_fields %}
+    <div class="form-group">
+        {{ field.name }}: <input type="{{ field.type }}" name="{{ field }}"><br>
+    </div>
+{% endfor %}
+
+

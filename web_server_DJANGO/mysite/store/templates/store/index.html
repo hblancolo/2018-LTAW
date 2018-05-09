@@ -1,0 +1,47 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+
+<style>
+
+.container {
+    list-style-type: none;
+}
+
+.img_container {
+    float: left;
+    padding: 14px 16px;
+}
+
+div.img_container {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    font-family: Calibri;
+}
+
+.price_text {
+    color: green
+}
+
+</style>
+
+{% if latest_product_list %}
+    <div class="container">
+    {% for product in latest_product_list %}
+        <a href="{% url 'store:detail' product.id %}">
+            <div class="img_container">
+                <img alt="product" src="{{ product.product_pics.url }}" width="200" height="200">
+                <p>{{ product.product_name }}</p>
+                <p class="price_text">{{ product.product_price }} €</p>
+            </div>
+        </a>
+
+    {% endfor %}
+    </div>
+{% else %}
+    <p>No products are available.</p>
+{% endif %}
+
+
+{% endblock %}

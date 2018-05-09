@@ -1,0 +1,17 @@
+{% extends 'store/base.html' %}
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+
+    <h3>Results for your search:</h3>
+    {% if found_entries %}
+    <ul>
+        {% for entry in found_entries %}
+        <li><a href="{% url 'store:detail' entry.id %}">{{entry.product_name}} - {{ entry.product_type }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h4>No results found for your search</h4>
+    {% endif %}
+
+{% endblock %}

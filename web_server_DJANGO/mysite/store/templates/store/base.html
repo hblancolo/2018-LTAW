@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li.menu {
+    float: left;
+}
+
+li.menu a {
+    display: block; /* this makes the whole link area clickable, not just the text */
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none; /* removes the underlined of the link */
+}
+
+li.menu a:hover { /* when the mouse is over the link area, changes de color, to make it more visible */
+    background-color: #111;
+}
+
+#search-form {
+    padding: 14px;
+}
+
+
+#suggestions {
+    width:350px;
+    height:150px;
+    overflow: auto;
+    color: lightblue;
+}
+
+</style>
+
+</head>
+<body>
+{% csrf_token %}
+
+<ul class="menu">
+  <li class="menu"><a href="{% url 'store:index' %}">Home</a></li>
+  <li class="menu"><a href="{% url 'store:search' 'BC' %}">Bikes</a></li>
+  <li class="menu"><a href="{% url 'store:search' 'BK' %}">Books</a></li>
+  <li class="menu"><a href="{% url 'store:search' 'CD' %}">CDs</a></li>
+  <li class="menu" style="float:right"><a href="{% url 'store:cart' %}">Cart</a></li>
+  <form id="search-form" role="search" method="get" action="/store/search_results">
+    <input id="search-field" type="text" class="form-control" name="q" placeholder="Watcha want?" onkeyup="getSuggestions()">
+
+          <ul id="suggestions" class="menu" style="display:none">
+
+          </ul>
+
+    <button type="submit" class="btn btn-default">Search</button>
+  </form>
+</ul>
+
+{% load static %}
+    <script src="{% static "store/client.js" %}"></script>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

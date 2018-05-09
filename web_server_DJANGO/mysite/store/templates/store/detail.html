@@ -1,0 +1,22 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<style>
+    .buy-section {
+        display: inline-block;
+    }
+
+</style>
+
+
+<h1>{{ product.product_name }}</h1>
+<h2>{{ product.product_specs }}</h2>
+<div >
+    <h3 class="buy-section">{{ product.product_price }} euros</h3>
+    <a href="{% url 'store:buy' product.id %}">BUY PRODUCT</a>
+    <button type="button" onclick="addToCart({{ product.pk }})">Add to Cart</button>
+</div>
+
+<img src="{{ product.product_pics.url }}" width="400" height="400">
+
+{% endblock %}
