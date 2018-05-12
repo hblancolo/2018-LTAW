@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li.menu {
+    float: left;
+}
+
+li.menu a {
+    display: block; /* this makes the whole link area clickable, not just the text */
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none; /* removes the underlined of the link */
+}
+
+li.menu a:hover { /* when the mouse is over the link area, changes de color, to make it more visible */
+    background-color: #111;
+}
+
+#search-form {
+    padding: 14px;
+}
+
+#suggestions {
+    width:350px;
+    height:150px;
+    overflow: auto;
+    color: lightblue;
+}
+
+.product {
+    font-family: Calibri;
+    color: green;
+    font-size: 20px;
+}
+
+.form-input{
+    padding-bottom: 10px;
+}
+
+</style>
+</head>
+<body>
+<ul class="menu">
+  <li class="menu"><a href="/index.html">Home</a></li>
+  <li class="menu"><a href="/bikes.html">Bikes</a></li>
+  <li class="menu"><a href="/books.html">Books</a></li>
+  <li class="menu"><a href="/cds.html">CDs</a></li>
+  <li class="menu" style="float:right"><a href="#">Cart</a></li>
+  <form id="search-form" role="search" method="get" action="/search">
+    <input id="search-field" type="text" class="form-control" name="q" placeholder="Watcha want?" onkeyup="getSuggestions()">
+    <button type="submit" class="btn btn-default">Search</button>
+    <ul id="suggestions" class="menu" style="display:none">
+
+    </ul>
+  </form>
+</ul>
+<div class="container">
+    <h1>Enter your shipping address</h1>
+    <form method="post" action="/buy">
+        <div class="form-group">
+            <div class="form-input">
+                Your name: <input type="text" name="user_name" required><br>
+            </div>
+            <div class="form-input">
+                Shipping Address: <input type="text" name="shipping_address"><br>
+            </div>
+            <div class="form-input">
+                ZIP Code: <input type="number" name="zip_code" required><br>
+            </div>
+        </div>
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
+
+<script src="client.js"></script>
+
+</body>
+</html>
